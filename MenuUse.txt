@@ -1,0 +1,80 @@
+package SdjM000;
+import java.util.*;
+public class Menu {
+    private String title;
+    private String chances;
+    private UsePeople a;
+    public Menu(String title,String chances,UsePeople a)
+    {
+        this.title=title;
+        this.chances=chances;
+        this.a=a;
+        start();
+    }
+    public void GetApplication()
+    {
+
+        System.out.println(this.title);
+        System.out.println(this.chances);
+    }
+    public String GetScan()
+    {
+        Scanner scan1=new Scanner(System.in);
+        return  scan1.next();
+    }
+    public void start()
+    {
+        String choice=" ";
+        System.out.println("请输入你的选择：\n");
+        while(!choice.equalsIgnoreCase("exit"))
+        {
+            GetApplication();
+            choice=GetScan();
+            a.Application(choice);
+        }
+    }
+}
+
+package SdjM000;
+
+public interface  People {
+    public abstract void Application(String a);
+}
+
+package SdjM000;
+
+import java.util.*;
+public class  UsePeople implements People{
+    private String chance1="[A]compute 10*20\n"+"[T]fot trig menu";
+    private String chance2= "[1] to compute sin(2)\n"+"[2] to compute cos(2)";
+    private Menu subMeau;
+    public UsePeople()
+    {
+        Menu a=new Menu("Multiplication",chance1,this);
+    }
+      public void Application(String a)
+    {
+        if(a.equalsIgnoreCase("A"))
+        {
+            System.out.println("result = "+10*20);
+        }
+        else if(a.equalsIgnoreCase("T"))
+        {
+            this.subMeau=new Menu("Trigonometry",chance2,this);
+        }
+        else if(a.equalsIgnoreCase("1"))
+        {
+            System.out.println("sin(2) = "+Math.sin(2));
+        }
+        else if(a.equalsIgnoreCase("2"))
+        {
+            System.out.println("cos(2) = "+Math.cos(2));
+        }
+    }
+
+    public static void main(String args[])
+    {
+        UsePeople pepole1=new UsePeople();
+    }
+}
+

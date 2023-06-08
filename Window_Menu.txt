@@ -1,0 +1,49 @@
+package jiChuLianXi;
+import javax.swing.;
+import java.awt.;
+
+public class WindowMenu extends JFrame{
+    JMenuBar menuBar;
+    JMenu fruit;
+    JMenuItem bananaItem,pearItem;
+    JMenu apple;
+    JMenuItem redAppleItem,yellowAppleItem;
+    WindowMenu(String s,int x,int y,int w,int h)
+    {
+        init(s);
+        setBounds(x,y,w,h);
+        setLocation(x,y);
+        setSize(w,h);
+        setLayout(new FlowLayout(5));
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+    void init(String s)
+    {
+        setTitle(s);
+        menuBar =new JMenuBar();
+        fruit =new JMenu(水果菜单);
+        bananaItem =new JMenuItem(香蕉);
+        bananaItem.setIcon(new ImageIcon(banana.jpg));
+        pearItem =new JMenuItem(pear);
+        pearItem.setIcon(new ImageIcon(pear.jpg));
+        fruit.add(bananaItem,pearItem);
+        fruit.add(bananaItem);
+        fruit.add(pearItem);
+        fruit.addSeparator();添加分隔线
+        apple =new JMenu(苹果);
+        redAppleItem =new JMenuItem(reaApple.jpg);
+        yellowAppleItem=new JMenuItem(yellowApple.jpg);
+        redAppleItem.setIcon(new ImageIcon(redApple.jpg));
+        yellowAppleItem.setIcon(new ImageIcon(yellowApple.jpg));
+        apple.add(redAppleItem);
+        apple.add(yellowAppleItem);
+        fruit.add(apple);
+        menuBar.add(fruit);
+        setJMenuBar(menuBar);
+    }
+    public static void main(String args[])
+    {
+        WindowMenu menu=new WindowMenu(带来菜单的窗口,20,30,600,290);
+    }
+}

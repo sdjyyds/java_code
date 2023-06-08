@@ -1,0 +1,47 @@
+package NewInterface;
+public class Dmeng implements VideoCard{
+    public void Display()
+    {
+        System.out.println("Dmeng run~~~~");
+    }
+    public String getName()
+    {
+        return "Dmeng";
+    }
+}
+
+package NewInterface;
+
+public class MainBoard {
+    private VideoCard card;
+    private MainBoard()
+    {
+        begin();
+
+    }
+    void SetVideoCard(VideoCard Card)
+    {
+        this.card=Card;
+    }
+    protected void Keyboard()
+    {
+        System.out.println("键盘run~~~");
+    }
+    private void CUP()
+    {
+        System.out.println("CPU正在运行中~~~");
+    }
+    void begin()
+    {
+        this.Keyboard();
+        this.CUP();
+        card.Display();
+    }
+}
+
+package NewInterface;
+ interface VideoCard {
+    int i=1;
+    void Display();
+    String getName();
+}

@@ -1,0 +1,50 @@
+package animals;
+
+public abstract class Animal {
+    abstract void cry();
+    abstract void getAnimaName();
+}
+
+package animals;
+public class Application {
+    public static void main(String[] args) {
+        Simulator simulator = new Simulator();
+        simulator.playSound(new Dog());
+        simulator.playSound(new Cat());
+    }
+}
+
+package animals;
+public class Cat extends Animal{
+    void cry()
+    {
+        System.out.println("miamia");
+    }
+    void getAnimaName()
+    {
+        System.out.println("Cat");
+    }
+
+}
+
+package animals;
+
+public class Dog extends Animal {
+    void cry() {
+        System.out.println("wawawawa");
+    }
+    void getAnimaName() {
+        System.out.println("Dog");
+    }
+}
+
+package animals;
+
+public class Simulator {
+    void playSound(Animal animal)
+    {
+        animal.cry();
+        animal.getAnimaName();
+    }
+
+}
