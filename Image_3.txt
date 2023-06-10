@@ -1,0 +1,66 @@
+package Image_3;
+
+import javax.swing.*;
+
+public class test_1 {
+    public static void main(String[] args) {
+        Window_2 win=new Window_2();
+//        win.setTitle("文本框回车事件");
+//        win.setVisible(true);
+//        win.setBounds(10,10,400,400);
+//        win.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+}
+
+package Image_3;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class Window_2 extends JFrame{
+    JTextField jtextfield1,jtextfield2;
+    JLabel jabel;
+    Window_Listener listener;
+    protected Window_2()
+    {
+        setTitle("文本框回车事件");
+        setLayout(new FlowLayout());
+        setVisible(true);
+        setBounds(0,0,400,80);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        jtextfield1=new JTextField(10);
+        jtextfield2=new JTextField(10);
+        jabel=new JLabel("平方为");
+        listener=new Window_Listener();
+        listener.setWindow(this);
+        jtextfield1.addActionListener(listener);
+        add(jtextfield1);
+        getContentPane().add(jabel);
+        add(jtextfield2);
+    }
+}
+
+package Image_3;
+import java.awt.event.*;
+public class Window_Listener implements ActionListener{
+    Window_2 win;
+    void setWindow(Window_2 win)
+    {
+        this.win=win;
+    }
+    public void actionPerformed(ActionEvent e)
+    {
+        try {
+            double math1=Double.parseDouble(win.jtextfield1.getText());
+            boolean flag = true;
+            win.jtextfield2.setText(""+getSuqre(math1));
+        }
+        catch(Exception a){
+            System.out.println("输入异常，请重新输入");
+            win.jtextfield1.setText("");
+    }
+    }
+    private double getSuqre(double math1)
+    {
+        return math1*math1;
+    }
+}

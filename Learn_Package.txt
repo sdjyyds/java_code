@@ -1,0 +1,205 @@
+package Learn_Package;
+
+import java.awt.*;
+
+public class BorderLayoutDemo1 {
+
+    public static void main(String[] args) {
+        //1.创建Frame对象
+        Frame frame = new Frame("这里测试BorderLayout");
+        //2.指定Frame对象的布局管理器为BorderLayout
+        frame.setLayout(new BorderLayout(30,5));
+        //3.往Frame指定东南西北中各添加一个按钮组件
+        frame.add(new Button("东侧按钮"), BorderLayout.EAST);
+        frame.add(new Button("西侧按钮"), BorderLayout.WEST);
+        frame.add(new Button("南侧按钮"), BorderLayout.SOUTH);
+        frame.add(new Button("北侧按钮"), BorderLayout.NORTH);
+        frame.add(new Button("中间按钮"), BorderLayout.CENTER);
+        //4.设置Frame为最佳大小
+        frame.pack();
+        //5.设置Frame可见
+        frame.setVisible(true);
+    }
+}
+
+package Learn_Package;
+
+import java.awt.*;
+
+public class BorderLayoutDemo2 {
+    public static void main(String[] args) {
+        Frame frame = new Frame("BorderLayout布局测试");
+        //给frame设置BorderLayout管理器
+        frame.setLayout(new BorderLayout(30,30));
+        //向frame的指定区域添加组件
+        frame.add(new Button("北侧按钮"),BorderLayout.NORTH);
+        frame.add(new Button("南侧按钮"),BorderLayout.SOUTH);
+        frame.add(new Button("西侧按钮"),BorderLayout.WEST);
+        frame.add(new Button("东侧按钮"),BorderLayout.EAST);
+
+        frame.add(new Button("中间按钮"),BorderLayout.CENTER);
+        frame.add(new TextField("测试文本框"));
+        /**
+         * 向同一个区域内添加多个组件时，只会显示最后一个，其他的多个组件被覆盖
+         * 当四周区域内组件无内容时会被其他区域（中间）内容覆盖
+         */
+        Panel panel = new Panel();
+        panel.add(new Button("中间按钮"),BorderLayout.CENTER);
+        panel.add(new TextField("测试文本框"));
+        frame.add(panel);
+        frame.setBounds(200,200,600,300);
+        //frame.pack();
+        frame.setVisible(true);
+    }
+}
+
+package Learn_Package;
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.LineBorder;
+
+public class Test extends JFrame {
+    public Test() {
+        setTitle("Java 第二个 GUI 程序");    //设置显示窗口标题
+        setBounds(100, 100, 400, 341);    //设置窗口显示位置及尺寸
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);    //设置窗口是否可见
+        getContentPane().setLayout(null);//设置空布局，组件想怎么放怎么放
+
+        JPanel panel = new JPanel();//第一个JPanel
+        panel.setBorder(new LineBorder(Color.CYAN));
+        panel.setBounds(10, 10, 364, 98);
+        panel.add(new Label("first"));//将标签放入面板中
+        getContentPane().add(panel);//将panel放入jframe界面
+
+        JPanel panel_1 = new JPanel();//第二个JPanel
+        panel_1.setBorder(new LineBorder(Color.PINK));
+        panel_1.setBounds(10, 141, 364, 128);
+        panel_1.add(new Label("second"));//这是第二个面板
+        getContentPane().add(panel_1);//将panel放入jframe界面
+    }
+
+    public static void main(String[] args) {
+        new Test();
+    }
+}
+
+package Learn_Package;
+import java.awt.*;
+import javax.swing.*;
+public class Test_1 {
+    public static void main(String[] args)
+    {
+        Dialog f=new Dialog(new Frame());
+        f.setSize(600,400);
+        f.setLocation(100,100);
+        f.setBackground(Color.blue);
+        Button b =new Button("Button Test");
+        f.add(b);
+        f.setVisible(true);
+    }
+}
+
+package Learn_Package;
+import java.awt.*;
+import javax.swing.*;
+public class Test_2 extends JFrame{
+    Button b,a;
+    public Test_2(String s) {
+        super.setTitle(s);
+        super.setSize(600,600);
+        //setSize(600,600);
+        setLayout(new FlowLayout(FlowLayout.LEFT,5,20));
+        super.setBackground(Color.blue);
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        b=new Button("666");
+        a=new Button("999");
+        setForeground(Color.yellow);
+        a.setBackground(Color.red);
+        b.setBackground(Color.green);
+        add(b);
+        add(a);
+    }
+    public void paint(Graphics g)
+    {
+        super.paint(g);
+        g.setColor(Color.gray);
+    }
+    public static void main(String args[])    {
+        Test_2 MyFrame =new Test_2("Hello out there!");
+    }
+}
+
+package Learn_Package;
+import javax.swing.*;
+import java.awt.*;
+public class Test_4 extends JFrame{
+    public Test_4() {
+        setTitle("Java 第二个 GUI 程序");    //设置显示窗口标题
+        setBounds(100,100,400,341);    //设置窗口显示位置及尺寸
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel jPanel=new JPanel();    //创建面板
+        JButton btn1=new JButton("1");    //创建按钮
+        JButton btn2=new JButton("2");
+        JButton btn3=new JButton("3");
+        JButton btn4=new JButton("4");
+        JButton btn5=new JButton("5");
+        JButton btn6=new JButton("6");
+        JButton btn7=new JButton("7");
+        JButton btn8=new JButton("8");
+        JButton btn9=new JButton("9");
+        jPanel.add(btn1);    //面板中添加按钮
+        jPanel.add(btn2);
+        jPanel.add(btn3);
+        jPanel.add(btn4);
+        jPanel.add(btn5);
+        jPanel.add(btn6);
+        jPanel.add(btn7);
+        jPanel.add(btn8);
+        jPanel.add(btn9);
+        //向JPanel添加FlowLayout布局管理器，将组件间的横向和纵向间隙都设置为20像素
+        //FlowLayout(int align, int hgap,int vgap)组件对齐方式以及横纵隔距离
+        jPanel.setLayout(new FlowLayout(FlowLayout.LEADING,20,20));
+        jPanel.setBackground(Color.blue);    //设置背景色
+        add(jPanel);
+        setVisible(true);    //设置窗口是否可见,注意，一般这个放最后面更合适
+    }
+    public static void main(String[] args) {
+        new Test_4();
+    }
+}
+
+package Learn_Package;
+import java.awt.*;
+import javax.swing.*;
+public class Test_5 extends JFrame{
+    public Test_5(String title)
+    {
+        setTitle("我去");
+        setBounds(20,30,200,200);
+        setLayout(new BorderLayout(5,5));
+        JPanel panel1=new JPanel();
+        panel1.setLayout(new BorderLayout());
+        panel1.setBounds(20,30,2000,2000);
+        panel1.add(new Button("label6666"),BorderLayout.EAST);
+        panel1.add(new Label("text123"),BorderLayout.WEST);
+        panel1.add(new TextArea("TextArea"),BorderLayout.NORTH);
+        panel1.add(new TextArea("ssss"),BorderLayout.SOUTH);
+        panel1.add(new Button("label1"),BorderLayout.CENTER);
+        add(panel1);
+//        add(new Button("label我区"),BorderLayout.EAST);
+//        add(new Label("text123"),BorderLayout.WEST);
+//        add(new TextArea("TextArea"),BorderLayout.NORTH);
+//        add(new TextArea("ssss"),BorderLayout.SOUTH);
+//        add(new Button("label1"),BorderLayout.CENTER);
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        pack();
+    }
+    public static void main(String []args)
+    {
+        Test_5 test1=new Test_5("我去！");
+        System.out.println("我去！");
+    }
+}
