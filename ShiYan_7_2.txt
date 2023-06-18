@@ -1,0 +1,63 @@
+package ShiYan7;
+
+import static java.lang.Math.abs;
+
+public class Complex {
+    int in1;
+    double dou1;
+    float fl1;
+    final static double exp=0.00000001;
+    Complex(String a,String b,String c)
+    {
+        try{
+            in1=Integer.parseInt(a);
+            dou1=Double.parseDouble(b);
+            fl1=Float.parseFloat(c);
+        }
+        catch (Exception e)
+        {
+            System.out.println("有错误！");
+        }
+    }
+    void printIn()
+    {
+        try{
+            if(in1==0) throw new Exception("int数字错误！");
+            System.out.println(in1);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    void printdou()
+    {
+
+
+        try{
+            if(!(abs(dou1 - exp) > 0)) throw new Exception("double数字错误！");
+            System.out.println(dou1);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    void printfl() {
+
+        try {
+            if (!(abs(dou1 - exp) >0)) throw new Exception("float数字错误！");
+            System.out.println(fl1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Complex a=new Complex("12.0","1.0","0.1");
+        a.printfl();
+        a.printIn();
+        a.printdou();
+    }
+}
