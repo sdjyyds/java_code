@@ -1,0 +1,106 @@
+package Lean1;
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.List;
+
+public class classAndObject {
+    public static void main(String []args)
+    {
+          Scanner str=new Scanner(System.in);
+        ArrayList<Integer> a=new ArrayList<Integer>();
+//todo:字符串比较
+ String s="safgsa",s2="safgsa";
+        String ns=new String("safgsa");
+        if(s==ns) System.out.println(1);
+        else System.out.println(0);
+        if(s.equals(ns)) System.out.println("1");
+        else System.out.println("0");
+        if(s.compareTo(s2)==0) System.out.println("1");
+        else System.out.println("0");
+//todo:处理动态数组的读入
+ int n=str.nextInt();
+ while(n-->0)  a.add(str.nextInt());
+ for(int i=0;i<a.size();i++) System.out.printf("%d ",a.get(i));
+         //代码块1
+        //short s1 = 1; s1 = s1 + 1;
+        // 代码块2
+        short s1 = 1; s1 += 1;
+    }
+}
+
+//todo：方法重载
+class add{
+    int intAdd(int a,int b) {
+        return a + b;
+    }
+    double intAdd(double a,double b){
+        return a+b;
+    }
+}
+//todo：方法覆盖（重写）
+class grandpa
+{
+    String name;
+    int age;
+    private String a="Happy";
+    public void habit()
+    {
+        System.out.println("遛弯");
+    }
+}
+class father extends grandpa{
+    private  String a="busy";
+
+    @Override
+    public void habit() {
+        System.out.println("跳舞");
+    }
+}
+
+class person{
+    private privateCount personCount;
+    private String name;
+    int age;
+    String hobby,phoneNumber,weChatNumber;
+    person(String name,int age,String hobby,String phoneNumber,String weChatNumber,double privateMoney,double ...buy) {
+        this.age = age;
+        this.hobby = hobby;
+        this.phoneNumber = phoneNumber;
+        this.name = name;
+        this.weChatNumber = weChatNumber;
+        personCount = new privateCount(privateMoney);
+        if(buy.length>1) Comsuption(buy[0],buy[1]);
+        else Comsuption(buy[0]);
+    }
+    void Comsuption(double buyForone) {
+        personCount.privateMoney-=buyForone;
+        personCount.showMoney();
+    }
+    void Comsuption(double buyForone,double buyForevery) {
+        personCount.privateMoney-=buyForone;
+        personCount.money-=buyForevery;
+        personCount.showMoney();
+    }
+}
+class privateCount {
+
+    public static double money=10000;
+    double privateMoney;
+    privateCount(double privateMoney){
+        this.privateMoney=privateMoney;
+    }
+    void showMoney()
+    {
+        System.out.println("我的个人账户的余额为："+privateMoney);
+        System.out.println("我的班级账户的余额为："+money);
+    }
+
+
+    public static void main(String[] args) {
+        Scanner str=new Scanner(System.in);
+        person p1=new person("张三",20,"打篮球，已练习两年半","13080561484","wozuishuai",2000.2,200,5425);
+    }
+}
+
+
