@@ -1,0 +1,77 @@
+package Lean1;
+
+import static java.util.Arrays.sort;
+
+public class learnInterface {
+}
+
+interface Com{
+    public static final int max=100;
+    int st=0,ed=100;
+    public abstract void add(int ...a);
+    float sum(float a,float b);
+    //可以定义实例方法
+    public default int Max(int a,int b){
+        return a>b?a:b;
+    }
+    public default int findXIndex(int a[],int x)
+    {
+        int res=lintTwoFind(a,x);
+        System.out.println("该值在数组中的左下标为L："+res);
+        return res;
+    }
+    //可以定义类方法
+    public static void f()
+    {
+        System.out.println("注意是从java SE 8开始的");
+    }
+    //在接口中封装算法
+    private  int lintTwoFind(int a[],int x)
+    {
+        int l=0,r=a.length-1,res=-1;
+        while(l<r)
+        {
+            int mid=l+r>>1;
+            if(a[mid]>=x) r=mid;
+            else l=mid+1;
+        }
+        if(a[l]==x) res=l;
+        return res;
+    }
+    private void sortArray(int a[])
+    {
+
+    }
+
+    public static void main(String[] args)
+    {
+        int a=10,b=20;
+        Com.f();
+        //错误Com.Max();
+        c c1=new c();
+        System.out.println("a和b的最大值是"+c1.Max(a,b));
+
+        int array[]={10,23,42,-1,-22,5};
+        sort(array);
+        c1.add(array);
+        c1.findXIndex(array,-1);
+        float a1=3.14f,b1=2.4f;
+        System.out.println("a1和b1的和是：" +c1.sum(a1,b1));
+
+    }
+}
+class c implements Com{
+    public void add(int... a)
+    {
+        int res=0;
+        for(var i:a)
+        {
+            res+=i;
+        }
+        System.out.println("该数组的和是："+res);
+    }
+    public float sum(float a,float b)
+    {
+        return a+b;
+    }
+}
