@@ -1,0 +1,197 @@
+package Learn2;
+
+public class lambdaTest {
+    public static void main(String[] args) {
+        SingleCom sm=(int a,int b)->{
+            return a+b;
+        };
+        System.out.print(sm.sum(10,2));
+    }
+}
+interface SingleCom{
+    public abstract int sum(int a,int b);
+    //public abstract int sub(double a,double b);
+}
+
+abstract class MotorVehicles{
+    abstract void brake();
+}
+interface MoneyFare{
+    void charge();
+}
+interface ControlTemperature{
+    void controlAirTemperature();
+}
+class Bus extends MotorVehicles implements MoneyFare{
+    public void brake(){
+        System.out.println("公交车使用刹车技术");
+    }
+    public void charge(){
+        System.out.println("公交汽车：一元/张，不计算公里数");
+    }
+}
+class Taxi extends MotorVehicles implements MoneyFare,ControlTemperature{
+    void brake()
+    {
+        System.out.println("出租车使用刹车技术");
+    }
+    public void charge()
+    {
+        System.out.println("出租车：2元/公里，起价3公里");
+    }
+    public void controlAirTemperature(){
+        System.out.println("出租车安装了hair空调");
+    }
+}
+class Cinema implements MoneyFare,ControlTemperature{
+    public void charge(){
+        System.out.println("电影院门票：十元/张");
+    }
+    public void controlAirTemperature(){
+        System.out.println("电影院安装了中央空调");
+    }
+}
+
+class test1{
+    public static void main(String[] args) {
+        Bus bus101=new Bus();
+        Taxi blueTaxi=new Taxi();
+        Cinema redStarCinema=new Cinema();
+        MoneyFare fare;
+        ControlTemperature temperature;
+        fare=bus101;
+        bus101.brake();
+        fare.charge();
+        fare=blueTaxi;
+        temperature=blueTaxi;
+        blueTaxi.brake();
+        fare.charge();
+        temperature.controlAirTemperature();
+        fare=redStarCinema;
+        temperature=redStarCinema;
+        fare.charge();
+        temperature.controlAirTemperature();
+    }
+}
+
+interface SpeakHello{
+    void speakHello();
+}
+class Chinese implements SpeakHello{
+    public void speakHello(){
+        System.out.println("中国人习惯问候语：你好，吃饭了吗？");
+    }
+}
+class English implements SpeakHello{
+    public void speakHello(){
+        System.out.println("英国人习惯问候语：你好，天气不错");
+    }
+}
+
+class KindHello{
+    public void lookHello(SpeakHello hello){
+        hello.speakHello();
+    }
+}
+class test2{
+    public static void main(String[] args) {
+        KindHello a=new KindHello();
+        Chinese ccc=new Chinese();
+        a.lookHello(ccc);
+        a.lookHello(new English());
+        a.lookHello(()->{
+            System.out.println("码农习惯问候语：no bug");
+        });
+    }
+}
+
+interface Advertisement{
+    void showAdvertisement();
+    String getCorpName();
+}
+class AdvertisementBoard{
+    Advertisement adver;
+    public void setAdvertisement(Advertisement adver){
+        this.adver=adver;
+    }
+    public void show(){
+        if(adver==null){
+            System.out.println("广告招商中");
+        }
+        else{
+            adver.showAdvertisement();
+        }
+    }
+}
+class WhiteCloudCorp implements Advertisement{
+    @Override
+    public void showAdvertisement() {
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println("飞机中的战斗机,哎yes!");
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    }
+    public String getCorpName() {
+        return "白云公司";
+    }
+}
+class BlackLandCorp implements Advertisement{
+    @Override
+    public void showAdvertisement() {
+        System.out.println("************************");
+        System.out.printf("劳动是爹\n土地是妈\n");
+        System.out.println("************************");
+    }
+
+    @Override
+    public String getCorpName() {
+        return "黑土集团";
+    }
+}
+
+class test3{
+    public static void main(String[] args) {
+        AdvertisementBoard board=new AdvertisementBoard();
+        board.show();
+        board.setAdvertisement(new WhiteCloudCorp());
+        board.show();
+        board.setAdvertisement(new BlackLandCorp());
+        board.show();
+    }
+}
+
+
+package Learn2;
+
+public class test1_1ed {
+    public static void main(String[] args) {
+        String s1="abc",s2="abc";
+        System.out.println(s1);
+        if(s2==s1) System.out.println("1");
+        if(s1.equals(s2)) System.out.println("2");
+        String s3=new String("abc"),s4=new String("abc");
+        System.out.println(s3);
+        if(s3==s4) System.out.println(3);
+        if(s3.equals(s4)) System.out.println(4);
+        int address=System.identityHashCode(s3);
+        System.out.println(address);
+        char a[]={'j','a','v','a'};
+        String s=new String(a);
+        //String s=new String(a,2,2);//下标为2，往后count2
+        //String s=new String("java");
+    }
+}
+
+class test1_2{
+    public static void main(String[] args) {
+        String hello="你好";
+        String testOne="你"+"好";
+        int address=System.identityHashCode("你好");
+        System.out.printf("你好的引用为：%x\n",address);
+        address=System.identityHashCode(hello);
+        System.out.printf("hello的引用：%x\n",address);
+        address=System.identityHashCode(testOne);
+        System.out.printf("testOne的引用：%x\n",address);
+
+    }
+}
+
