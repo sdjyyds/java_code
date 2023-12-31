@@ -1,0 +1,94 @@
+package Image_2;
+import java.awt.*;
+
+public class test_1 {
+    public static void main(String[] args) {
+        Window_1 win=new Window_1();
+    }
+}
+
+package Image_2;
+import java.awt.*;
+import javax.swing.*;
+public class Window_1 extends JFrame {
+    JLabel jlabel1,jlabel2,jlabel3,jlabel4;
+    JTextField jtextfield1,jtextfield2;
+    JRadioButton rbutton1,rbutton2;
+    JCheckBox jcheckbox1,jcheckbox2,jcheckbox3,jcheckbox5,jcheckbox4;
+    JButton jbutton1,jbutton2;
+    ButtonGroup group;
+    Window_1()
+    {
+        init();
+    }
+    void init()
+    {
+        setTitle("按钮类组件");
+        setBounds(100,100,400,340);
+        Font font=new Font("宋体",Font.PLAIN,20);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        JPanel panel=new JPanel();
+        jlabel1=new JLabel("会员姓名：");
+        jlabel1.setFont(font);
+        jtextfield1=new JTextField(25);
+        panel.setBounds(10, 50, 100, 50);
+        panel.add(jlabel1);
+        panel.add(jtextfield1);
+        jlabel2=new JLabel("会员密码：");
+        jlabel2.setFont(font);
+        jtextfield2=new JTextField(25);
+        panel.add(jlabel2);
+        panel.add(jtextfield2);
+        JPanel panel1=new JPanel();
+        jlabel3=new JLabel("性别：");
+        jlabel3.setFont(font);
+        rbutton1=new JRadioButton("男");
+        rbutton1.setFont(font);
+        rbutton2=new JRadioButton("女");
+        rbutton2.setFont(font);
+        group=new ButtonGroup();
+        group.add(rbutton1);
+        group.add(rbutton2);
+        panel1.setBounds(45,80,200,50);
+        panel1.add(jlabel3);
+        panel1.add(rbutton1);
+        panel1.add(rbutton2);
+        JPanel panel2=new JPanel();
+        panel2.setBounds(30,135,250,100);
+        jlabel4=new JLabel("爱好：");
+        jlabel4.setFont(font);
+        jcheckbox1=new JCheckBox("美术");
+        jcheckbox2=new JCheckBox("篮球");
+        jcheckbox3=new JCheckBox("排球");
+        jcheckbox4=new JCheckBox("溜冰");
+        jcheckbox5=new JCheckBox("写作");
+        jcheckbox1.setFont(font);
+        jcheckbox2.setFont(font);
+        jcheckbox3.setFont(font);
+        jcheckbox4.setFont(font);
+        jcheckbox5.setFont(font);
+        panel2.add(jlabel4);
+        panel2.add(jcheckbox1);
+        panel2.add(jcheckbox2);
+        panel2.add(jcheckbox3);
+        panel2.add(jcheckbox4);
+        panel2.add(jcheckbox5);
+        jbutton1=new JButton("取消");
+        jbutton2=new JButton("确定");
+        jtextfield1=new JTextField(25);
+        jtextfield2=new JTextField(25);
+        font=new Font("宋体",Font.PLAIN,25);
+        jbutton1.setFont(font);
+        jbutton2.setFont(font);
+        JPanel panel3=new JPanel();
+        panel3.setBounds(20,220,300,200);
+        panel3.add(jbutton1);
+        panel3.add(jbutton2);
+        getContentPane().add(panel3);
+        getContentPane().add(panel2);
+        getContentPane().add(panel1);
+        getContentPane().add(panel);
+
+    }
+}

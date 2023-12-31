@@ -1,0 +1,27 @@
+package Inner_Class_2;
+interface  SpeakHello {
+    public abstract void speak();
+}
+public class HelloMachine {
+    public void turnOn(SpeakHello hello)
+    {
+        hello.speak();
+    }
+}
+class test {
+    public static void main(String []args)
+    {
+        HelloMachine machine=new HelloMachine();
+        machine.turnOn(new SpeakHello() {
+            @Override
+            public void speak() {
+                System.out.println("Hello Welcome!");
+            }
+        });
+        machine.turnOn(new SpeakHello(){
+            public void speak(){
+                System.out.println("你好，欢迎光临!");
+            }
+        });
+    }
+}

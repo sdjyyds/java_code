@@ -1,0 +1,67 @@
+package thingHandle_2;
+import java.awt.event.* ;
+public class PoliceListener implements ActionListener{
+    Windowview view;
+    void setView(Windowview view)
+    {
+        this.view=view;
+    }
+    public void actionPerformed(ActionEvent e)
+    {
+        if(e.getSource()==view.inputText)
+        {
+            String str=view.inputText.getText();
+            view.textShow.append(str+"的长度："+str.length()+"\n");
+        }
+        else if(e.getSource()==view.button)
+        {
+            String str=view.button.getText();
+            view.textShow.append(str+"\n");
+        }
+    }
+}
+
+package thingHandle_2;
+
+public class test_2 {
+    public static void main(String[] args) {
+        Windowview win=new Windowview();
+        win.setBounds(100,100,600,460);
+        win.setTitle("处理ActionEvent事件");
+    }
+}
+
+package thingHandle_2;
+import java.awt.*;
+import javax.swing.*;
+public class Windowview extends JFrame{
+    public JTextField inputText;
+    public JTextArea textShow;
+    public JButton button;
+    PoliceListener listener;
+    public Windowview()
+    {
+        init();
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+    void init()
+    {
+        setLayout(new FlowLayout());
+        Font font=new Font("宋体",Font.PLAIN,20);
+        inputText=new JTextField(20);
+        inputText.setFont(font);
+        button=new JButton("确定");
+        button.setFont(font);
+        font=new Font("宋体",Font.BOLD,22);
+        textShow=new JTextArea(9,30);
+        textShow.setFont(font);
+        listener=new PoliceListener();
+        listener.setView(this);
+        inputText.addActionListener(listener);
+        button.addActionListener(listener);
+        add(inputText);
+        add(button);
+        add(new JScrollPane(textShow));
+    }
+}

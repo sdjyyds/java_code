@@ -1,0 +1,40 @@
+package animals;
+
+public class Simulator {
+    void playSound(Animal animal)
+    {
+        animal.cry();
+        animal.getAnimaName();
+    }
+
+}
+
+package Adventurea;
+
+public class Adventure {
+    static void t(CanFight x){x.fight();}
+    static void u(CanSwim x){x.swim();}
+    static void v(CanFly x){x.fly();}
+    static void w(ActionCharacter x){x.fight();}
+    public static void main(String[] args)
+    {
+        Hero i=new Hero();
+        t(i);
+        u(i);
+        v(i);
+        w(i);
+    }
+}
+
+package Adventurea;
+
+public interface CanFight {
+    void fight();
+}
+interface CanFly {
+    void fly();
+}
+interface CanSwim{
+    void swim();
+}
+
